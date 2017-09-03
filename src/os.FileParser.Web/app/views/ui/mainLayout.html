@@ -1,0 +1,75 @@
+﻿<div class="wrapper" ng-controller="homeController">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" ui-sref="root.home">
+                    <img src="../../../img/logo-active.png" alt="logo" />
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ui-sref="root.home"><span class="fa fa-bank"></span> &nbsp; Home </a></li>
+                    <li><a ui-sref="account.list"><span class="fa fa-cc-visa"></span> &nbsp; Bank Accounts</a></li>
+                    <li><a href="https://web.facebook.com/Mali.com/" target="_blank"><span class="fa fa-facebook-square"></span> &nbsp; Recent News</a></li>
+                    <li class="dropdown current-user">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                            <span><i class="fa fa-support"></i></span>
+                            <span class="username"> &nbsp; Support</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-dark">
+                            <li>
+                                <a ui-sref="enquiry.new"><span class="fa fa-users"></span> &nbsp; New Enquiry</a>
+                            </li>
+                            <li>
+                                <a ui-sref="enquiry.list"><span class="fa fa-bullhorn"></span> &nbsp; View Enquiries</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown current-user" ng-show="member.isAdmin">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                            <span><i class="fa fa-wrench"></i></span>
+                            <span class="username"> &nbsp; Admin <i class="fa fa-angle-down fa fa-user"></i></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-dark">
+                            <li >
+                                <a ui-sref="admin.enquiries"><span class="fa fa-bullhorn"></span> &nbsp; View Enquiries</a>
+                            </li>
+                            <li>
+                                <a ui-sref="admin.users-list"><span class="fa fa-users"></span> &nbsp; Users&nbsp;<b>{{users.length | number}}</b></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown current-user">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                            <span><i class="fa fa-user"></i></span>
+                            <span class="username">&nbsp; {{member.firstName}} {{member.lastName}} <i class="fa fa-angle-down fa fa-user"></i></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-dark">
+                            <li>
+                                <a ui-sref="profile.edit"><span class="fa fa-user"></span> &nbsp; My Profile</a>
+                            </li>
+                            <li>
+                                <a ui-sref="root.followers"><span class="fa fa-users"></span> &nbsp; My Followers &nbsp;<b>{{statistics.totalFollowers | number}}</b></a>
+                            </li>
+                            <li>
+                                <a ui-sref="profile.security"><span class="fa fa-user-secret"></span> &nbsp; Security</a>
+                            </li>
+                            <li >
+                                <a href="" ng-click="logOut()"><span class="fa fa-sign-out"></span> &nbsp; Log Out</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br />
+    <div class="main-content">
+        <div ui-view=""></div>
+    </div>
+</div>
